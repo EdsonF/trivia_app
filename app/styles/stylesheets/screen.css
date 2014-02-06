@@ -66,3 +66,9 @@ a img {
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
+
+/* line 1, ../sass/partials/_base.scss */
+.has-error {
+  border-color: #ff0000 !important;
+  box-shadow: 0 0px 5px rgba(255, 0, 0, 0.5) !important;
+}

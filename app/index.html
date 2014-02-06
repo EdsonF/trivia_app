@@ -19,6 +19,7 @@
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,app}) styles/main.css -->
+    <link rel="stylesheet" href="bower_components/foundation/css/foundation.css">
     <link rel="stylesheet" href="styles/stylesheets/screen.css">
     <!-- endbuild -->
 </head>
@@ -28,8 +29,33 @@
     your browser</a> to improve your experience.</p>
 <![endif]-->
 
+
 <!-- Add your site or application content here -->
+<nav class="top-bar" data-ng-controller="NavCtrl" data-topbar>
+    <ul class="title-area">
+        <li class="name"><h1><a href="#">My Site</a></h1></li>
+    </ul>
+    <section class="top-bar-section">
+        <!-- Right Nav Section -->
+        <ul class="right">
+            <li data-ng-hide="loggedIn"><a href="#/login">Login</a></li>
+            <li data-ng-hide="loggedIn"><a href="#/register">Register</a></li>
+            <li data-ng-show="loggedIn"><a href="#/logout">Logout</a></li>
+        </ul>
+    </section>
+</nav>
+
+<div class="app-errors">
+    <ul>
+        <li data-ng-repeat="error in errors">
+            <p>There was an error.</p>
+        </li>
+    </ul>
+</div>
+
+
 <div data-ng-view=""></div>
+
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
 <script>
@@ -56,18 +82,27 @@
 
 <!-- build:js scripts/vendor.js -->
 <!-- bower:js -->
+<script src="bower_components/jquery/jquery.js"></script>
+<script src="bower_components/jquery.cookie/jquery.cookie.js"></script>
+<script src="bower_components/jquery-placeholder/jquery.placeholder.js"></script>
+<script src="bower_components/jquery-validation/jquery.validate.js"></script>
+<script src="bower_components/modernizr/modernizr.js"></script>
 <script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/angular-route/angular-route.js"></script>
 <script src="bower_components/angular-resource/angular-resource.js"></script>
 <script src="bower_components/dreamfactory/dreamfactory.js"></script>
 <script src="bower_components/dreamfactory/lib/swagger.js"></script>
 <script src="bower_components/dreamfactory/lib/shred.bundle.js"></script>
+<script src="bower_components/foundation/js/foundation.js"></script>
+<script src="bower_components/foundation/js/foundation/foundation.abide.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
 <script src="scripts/app.js"></script>
 <script src="scripts/controllers/main.js"></script>
+<script src="scripts/directives/directives.js"></script>
+<script src="scripts/services/services.js"></script>
 <!-- endbuild -->
 </body>
 </html>
