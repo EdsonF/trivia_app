@@ -2,11 +2,11 @@
 
 
 angular.module('triviaApp.services', [])
-    .factory('StringService', [function() {
+    .factory('StringService', [function () {
 
         return {
 
-            areIdentical: function(stringA, stringB) {
+            areIdentical: function (stringA, stringB) {
 
                 stringA = stringA || '';
                 stringB = stringB || '';
@@ -20,7 +20,7 @@ angular.module('triviaApp.services', [])
 
                     var l = Math.min(stringA.length, stringB.length);
 
-                    for (var i =0; i<l; i++) {
+                    for (var i = 0; i < l; i++) {
                         if (stringA.charAt(i) !== stringB.charAt(i)) {
                             return false;
                         }
@@ -36,11 +36,14 @@ angular.module('triviaApp.services', [])
             }
         }
     }])
-    .service('UserService', ['$q', 'DreamFactory', 'ErrorsService', function ($q, DreamFactory, ErrorsService) {
+    .service('UserService', [function () {
 
         var user = {
-                displayName: '',
-                sessionId: ''
+                firstName: null,
+                lastName: null,
+                displayName: 'Guest',
+                sessionId: '',
+                lastLogin: null
             },
 
             loggedIn = false;
@@ -51,7 +54,25 @@ angular.module('triviaApp.services', [])
         }
 
         function _setUser(userObj) {
-            user = userObj;
+
+            _setUserDisplayName(userObj.display_name);
+            _setUserSessionId(userObj.session_id);
+            _setUserFirstName(userObj.first_name);
+            _setUserLastName(userObj.last_name);
+            _setUserLastLoginDate(userObj.last_login);
+            _setLogInStatus(true);
+        }
+
+        function _unsetUser() {
+            user = {
+                firstName: null,
+                lastName: null,
+                displayName: 'Guest',
+                sessionId: '',
+                lastLogin: null
+            };
+
+            _setLogInStatus(false);
         }
 
         function _setUserDisplayName(userDisplayName) {
@@ -64,6 +85,21 @@ angular.module('triviaApp.services', [])
             user.sessionId = userSessionId;
         }
 
+        function _setUserFirstName(userFirstName) {
+
+            user.firstName = userFirstName;
+        }
+
+        function _setUserLastName(userLastName) {
+
+            user.lastName = userLastName;
+        }
+
+        function _setUserLastLoginDate(userLastLoginDate) {
+
+            user.lastLogin = userLastLoginDate;
+        }
+
         function _isLoggedIn() {
 
             return loggedIn;
@@ -74,135 +110,29 @@ angular.module('triviaApp.services', [])
             loggedIn = status;
         }
 
-        function _login(creds) {
-
-            var defer = $q.defer();
-
-            DreamFactory.api.user.login({body: creds},
-                function (data) {
-                    defer.resolve(data);
-                },
-
-                function (data) {
-                    defer.reject(data);
-                });
-
-            return defer.promise;
-
-        }
-
-        function _logout() {
-
-
-            return DreamFactory.api.user.logout();
-
-        }
-
-        function _register(creds) {
-
-            var defer = $q.defer();
-
-            DreamFactory.api.user.register({body: creds},
-                function (data) {
-
-                    defer.resolve(data);
-                },
-                function (data) {
-
-                    defer.reject(data);
-                });
-
-            return defer.promise;
-        }
-
 
         return {
-            login: function (creds) {
 
-                var defer = $q.defer();
+            getUser: function () {
 
-                _login(creds).then(
-                    function (result) {
-
-                        _setUser({
-                            displayName: result.display_name,
-                            sessionId: result.session_id
-                        });
-
-                        _setLogInStatus(true);
-
-                        defer.resolve(true)
-                    },
-                    function (reason) {
-                        defer.reject(reason)
-                    });
-
-                return defer.promise;
+                return _getUser();
             },
 
+            setUser: function (user) {
 
-            logout: function () {
+                _setUser(user);
+            },
 
-                _logout();
-                _setUser({
-                    name: '',
-                    displayName: '',
-                    sessionId: ''
-                });
-                _setLogInStatus(false);
+            unsetUser: function () {
 
-
+                _unsetUser();
             },
 
             isLoggedIn: function () {
+
                 return _isLoggedIn();
-            },
-
-            register: function(creds) {
-
-                var defer = $q.defer();
-
-                _register(creds).then(
-                    function() {
-                        defer.resolve(true)
-                    },
-                    function(reason) {
-                        defer.reject(reason);
-                    });
-
-                return defer.promise;
-
             }
-
         }
     }])
-    .service('ErrorsService', [function () {
-
-        var errors = {};
-
-        function _getErrors() {
-
-            return errors;
-        }
-
-        function _setErrors(errorsObj) {
-
-            errors = errorsObj;
-        }
-
-        return {
-
-            getErrors: function () {
-
-                return _getErrors();
-            },
-
-            setErrors: function (errorsObj) {
-
-                _setErrors(errorsObj);
-            }
-
-        }
-
-
-    }])
+    .service('MovieService', [function () {
+    }]);

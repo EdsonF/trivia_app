@@ -8,7 +8,7 @@ angular.module('triviaApp', [
         'triviaApp.services'
     ])
     .constant('DSP_URL', 'https://dsp-movie.cloud.dreamfactory.com')
-    .constant('DSP_API_KEY', 'launchpad')
+    .constant('DSP_API_KEY', 'Movies')
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider
             .when('/', {
@@ -25,12 +25,15 @@ angular.module('triviaApp', [
             })
             .when('/logout', {
                 resolve: {
-                    logout: ['$location', '$rootScope', 'UserService', function($location, $rootScope, UserService) {
+                    logout: ['$location', '$rootScope', 'UserService', 'DreamFactory',
+                        function ($location, $rootScope, UserService, DreamFactory) {
 
-                        UserService.logout();
-                        $rootScope.$broadcast('user:logout');
-                        $location.url('/');
-                    }]
+                            DreamFactory.api.user.logout();
+                            UserService.unsetUser();
+                            $rootScope.$broadcast('user:logout');
+                            $location.url('/');
+
+                        }]
                 }
             })
             .otherwise({
@@ -38,11 +41,21 @@ angular.module('triviaApp', [
             });
     }])
     .config(['$provide', function ($provide) {
-        $provide.decorator('$exceptionHandler', ['$delegate', function ($delegate) {
+        $provide.decorator('$exceptionHandler', ['$delegate', '$injector', function ($delegate, $injector) {
             return function (exception, cause) {
-                console.log(exception.message);
-                alert(exception.message);
+
+                $injector.get('$rootScope').$broadcast('app:error', exception.message);
                 return $delegate(exception, cause);
             }
         }]);
-    }]);
+    }])
+    .run(['$rootScope', function($rootScope) {
+
+
+        $rootScope.$on('$routeChangeStart', function(scope, next, current) {
+
+            $rootScope.$broadcast('app:error:clear');
+
+
+        })
+    }])

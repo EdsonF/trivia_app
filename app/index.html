@@ -45,10 +45,10 @@
     </section>
 </nav>
 
-<div class="app-errors">
+<div class="app-errors" data-ng-controller="ErrorsCtrl">
     <ul>
         <li data-ng-repeat="error in errors">
-            <p>There was an error.</p>
+            <p>{{error}}</p>
         </li>
     </ul>
 </div>

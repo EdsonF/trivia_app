@@ -1,1 +1,16 @@
-<p>Main page</p>
+<div class="row">
+    <div class="small-6 small-offset-3 columns">
+        <h1>Main Page</h1>
+
+        <div data-ng-hide="user.displayName !== 'Guest'">
+            <p>You are a Guest</p>
+        </div>
+
+        <div data-ng-show="user.displayName !== 'Guest'">
+        <ul>
+            <li>Logged in as: {{user.displayName}}</li>
+            <li>Current sessionId: {{user.sessionId}}</li>
+        </ul>
+        </div>
+    </div>
+</div>

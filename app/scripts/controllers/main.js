@@ -2,10 +2,9 @@
 
 angular.module('triviaApp')
     .controller('NavCtrl', ['$scope', 'UserService',
-        function ($scope, UserService) {
+        function ($scope) {
 
             $scope.loggedIn = false;
-            console.log($scope.loggedIn);
 
 
             $scope.$on('user:loggedIn', function (e) {
@@ -16,12 +15,33 @@ angular.module('triviaApp')
                 $scope.loggedIn = false;
             });
         }])
-    .controller('TriviaCtrl', ['$scope', function () {
+
+    .controller('ErrorsCtrl', ['$scope', function($scope) {
+
+        $scope.errors = [];
+
+
+        $scope.$on('app:error', function(e, error) {
+
+            $scope.errors.push(error);
+        });
+
+        $scope.$on('app:error:clear', function(e) {
+
+            $scope.errors = [];
+        })
+
 
 
     }])
-    .controller('LoginCtrl', ['$scope', '$rootScope', '$location', 'UserService',
-        function ($scope, $rootScope, $location, UserService) {
+    .controller('TriviaCtrl', ['$scope', 'MovieService', 'UserService', function ($scope, MovieService, UserService) {
+
+
+        $scope.user = UserService.getUser();
+
+    }])
+    .controller('LoginCtrl', ['$scope', '$rootScope', '$location', 'UserService', 'DreamFactory',
+        function ($scope, $rootScope, $location, UserService, DreamFactory) {
 
 
             // Vars
@@ -40,21 +60,34 @@ angular.module('triviaApp')
             // Private API
 
 
+
+
             // Handle Messages
             $scope.$on('user:login', function (e, creds) {
 
-                console.log(creds);
 
-                UserService.login(creds).then(function () {
-                    $location.url('/');
-                    $rootScope.$broadcast('user:loggedIn');
-                }, function () {
-                    throw {message: 'Unable to login.'}
-                })
+                var postData = {
+                    body: creds
+
+                };
+
+                DreamFactory.api.user.login(postData,
+                    function(data) {
+                        UserService.setUser(data);
+                        $rootScope.$broadcast('user:loggedIn');
+                        $location.url('/');
+                        $scope.$apply();
+                    },
+                    function(data) {
+                        $scope.$apply(function() {
+                            throw {message: 'Unable to login.'}
+
+                        })
+                    });
             })
         }])
-    .controller('RegisterCtrl', ['$scope', '$rootScope', '$location', 'StringService', 'UserService',
-        function ($scope, $rootScope, $location, StringService, UserService) {
+    .controller('RegisterCtrl', ['$scope', '$rootScope', '$location', 'StringService', 'DreamFactory', 'UserService',
+        function ($scope, $rootScope, $location, StringService, DreamFactory, UserService) {
 
             // Vars
             $scope.creds = {
@@ -71,21 +104,24 @@ angular.module('triviaApp')
                     return false
                 }
 
-
                 $scope.$broadcast('user:register', creds)
             };
 
             $scope.verifyUserPassword = function (creds) {
 
-                console.log(creds);
                 $scope.$broadcast('verify:password', creds);
             };
+
+
 
 
             // Private API
             function _verifyPassword(creds) {
                 return StringService.areIdentical(creds.password, creds.confirm);
             }
+
+
+
 
 
             // Handle Messages
@@ -96,13 +132,26 @@ angular.module('triviaApp')
 
             $scope.$on('user:register', function (e, creds) {
 
-                UserService.register(creds).then(function () {
-                    $rootScope.$broadcast('user:registered');
+                var data = {
+                    body: {
+                        email: creds.email,
+                        new_password: creds.password
+                    }
+                };
 
-                    UserService.login(creds).then(function () {
-                        $location.url('/');
+                DreamFactory.api.user.register(data,
+                    function (data) {
+                        UserService.setUser(data);
                         $rootScope.$broadcast('user:loggedIn');
-                    })
-                })
+                        $location.url('/');
+                        $scope.$apply();
+                    },
+                    function (data) {
+
+                        $scope.$apply(function() {
+
+                            throw {message: 'Unable to Register.'}
+                        })
+                    });
             })
         }]);
