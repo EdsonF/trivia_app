@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="44e99417-f93f-4a43-b9d3-a649e9700afd" name="Default" comment="Refactored services.  Add Error handling.">
+    <list default="true" id="44e99417-f93f-4a43-b9d3-a649e9700afd" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/scripts/app.js" afterPath="$PROJECT_DIR$/app/scripts/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/index.html" afterPath="$PROJECT_DIR$/app/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/main.html" afterPath="$PROJECT_DIR$/app/views/main.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/scripts/controllers/main.js" afterPath="$PROJECT_DIR$/app/scripts/controllers/main.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/scripts/services/services.js" afterPath="$PROJECT_DIR$/app/scripts/services/services.js" />
@@ -33,11 +32,8 @@
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="7" selection-start="1771" selection-end="1771" vertical-scroll-proportion="-30.0" vertical-offset="0" max-vertical-offset="1710">
-              <folding>
-                <marker date="1391791217000" expanded="true" signature="958:1111" placeholder="..." />
-                <marker date="1391791217000" expanded="true" signature="1051:1079" placeholder="..." />
-              </folding>
+            <state line="48" column="7" selection-start="1771" selection-end="1771" vertical-scroll-proportion="-0.0" vertical-offset="720" max-vertical-offset="1710">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -45,10 +41,8 @@
       <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/scripts/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="54" column="41" selection-start="1848" selection-end="1848" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="990">
-              <folding>
-                <marker date="1391792183000" expanded="true" signature="1767:1958" placeholder="[...]" />
-              </folding>
+            <state line="10" column="36" selection-start="280" selection-end="280" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="990">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -56,27 +50,25 @@
       <file leaf-file-name="main.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/scripts/controllers/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="44" selection-start="868" selection-end="868" vertical-scroll-proportion="0.0" vertical-offset="225" max-vertical-offset="2445">
+            <state line="57" column="26" selection-start="1329" selection-end="1329" vertical-scroll-proportion="0.0" vertical-offset="435" max-vertical-offset="3465">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="services.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="services.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/scripts/services/services.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="35" selection-start="1159" selection-end="1159" vertical-scroll-proportion="-5.769231" vertical-offset="0" max-vertical-offset="1650">
-              <folding>
-                <element signature="e#87#992#0" expanded="false" />
-              </folding>
+            <state line="285" column="0" selection-start="25142" selection-end="25142" vertical-scroll-proportion="5.418251" vertical-offset="0" max-vertical-offset="5325">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="main.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="14" selection-start="418" selection-end="418" vertical-scroll-proportion="0.2506427" vertical-offset="0" max-vertical-offset="778">
+            <state line="24" column="38" selection-start="730" selection-end="730" vertical-scroll-proportion="-7.2" vertical-offset="0" max-vertical-offset="615">
               <folding />
             </state>
           </provider>
@@ -107,7 +99,6 @@
         <option value="$PROJECT_DIR$/app/styles/sass/screen.scss" />
         <option value="$PROJECT_DIR$/app/scripts/dreamfactory/deamfactory.js" />
         <option value="$PROJECT_DIR$/app/scripts/dreamfactory/dreamfactory.js" />
-        <option value="$PROJECT_DIR$/app/bower_components/dreamfactory/dreamfactory.js" />
         <option value="$PROJECT_DIR$/app/scripts/directives/directives.js" />
         <option value="$PROJECT_DIR$/app/views/login.html" />
         <option value="$PROJECT_DIR$/app/views/registered.html" />
@@ -117,9 +108,10 @@
         <option value="$PROJECT_DIR$/bower.json" />
         <option value="$PROJECT_DIR$/app/index.html" />
         <option value="$PROJECT_DIR$/app/scripts/app.js" />
-        <option value="$PROJECT_DIR$/app/scripts/controllers/main.js" />
+        <option value="$PROJECT_DIR$/app/bower_components/dreamfactory/dreamfactory.js" />
         <option value="$PROJECT_DIR$/app/scripts/services/services.js" />
         <option value="$PROJECT_DIR$/app/views/main.html" />
+        <option value="$PROJECT_DIR$/app/scripts/controllers/main.js" />
       </list>
     </option>
   </component>
@@ -154,6 +146,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -284,9 +277,26 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="triviaapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="triviaapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bower_components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -364,7 +374,11 @@
       <created>1391729875180</created>
       <updated>1391729875180</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Refactored services.  Add Error handling.  App is ready for Movies data.  Still needs styling.">
+      <created>1391792755052</created>
+      <updated>1391792755052</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -373,17 +387,17 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3390558" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32967034" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33404863" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -403,7 +417,8 @@
     <MESSAGE value="Add DreamFactory AngularJS Module.&#10;" />
     <MESSAGE value="Add User service.  Adds login, register, set app user.  Add login and registration forms." />
     <MESSAGE value="Add angular-resource and angular-route to bower.json" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add angular-resource and angular-route to bower.json" />
+    <MESSAGE value="Refactored services.  Add Error handling.  App is ready for Movies data.  Still needs styling." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored services.  Add Error handling.  App is ready for Movies data.  Still needs styling." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -411,11 +426,50 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/index.html">
       <provider selected="true" editor-type-id="text-editor">
+        <state line="48" column="7" selection-start="1771" selection-end="1771" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1710">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="41" selection-start="1848" selection-end="1848" vertical-scroll-proportion="0.0" vertical-offset="810" max-vertical-offset="990">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/controllers/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="44" selection-start="868" selection-end="868" vertical-scroll-proportion="0.0" vertical-offset="225" max-vertical-offset="2445">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/services/services.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="35" selection-start="1159" selection-end="1159" vertical-scroll-proportion="0.0" vertical-offset="645" max-vertical-offset="2145">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="14" selection-start="418" selection-end="418" vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="315">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="6" selection-start="0" selection-end="724" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="345">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/index.html">
+      <provider selected="true" editor-type-id="text-editor">
         <state line="67" column="60" selection-start="2381" selection-end="2381" vertical-scroll-proportion="0.0" vertical-offset="464" max-vertical-offset="1155">
-          <folding>
-            <marker date="1391791217000" expanded="true" signature="958:1111" placeholder="..." />
-            <marker date="1391791217000" expanded="true" signature="1051:1079" placeholder="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -442,9 +496,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/bower_components/dreamfactory/lib/sdk-init.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="1" selection-start="1374" selection-end="1374" vertical-scroll-proportion="0.0" vertical-offset="525" max-vertical-offset="615">
-          <folding />
-        </state>
+        <state line="35" column="1" selection-start="1374" selection-end="1374" vertical-scroll-proportion="0.0" vertical-offset="525" max-vertical-offset="615" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/main.html">
@@ -461,9 +513,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/styles/sass/screen.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="17" selection-start="287" selection-end="287" vertical-scroll-proportion="0.110946745" vertical-offset="0" max-vertical-offset="676">
-          <folding />
-        </state>
+        <state line="5" column="17" selection-start="287" selection-end="287" vertical-scroll-proportion="0.110946745" vertical-offset="0" max-vertical-offset="676" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/bower_components/angular-resource/angular-resource.js">
@@ -473,51 +523,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/bower_components/dreamfactory/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2130">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/bower_components/dreamfactory/lib/shred.bundle.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="52035">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/bower_components/dreamfactory/lib/swagger.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="18660">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2130" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/scripts/directives/directives.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="43" selection-start="59" selection-end="59" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="195">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/bower_components/dreamfactory/lib/sdk-init.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="51" selection-start="358" selection-end="372" vertical-scroll-proportion="0.15209125" vertical-offset="0" max-vertical-offset="789">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/bower_components/dreamfactory/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1365">
-          <folding />
-        </state>
+        <state line="3" column="43" selection-start="59" selection-end="59" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="195" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/registered.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="778">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="778" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/bower_components/foundation/css/foundation.css">
@@ -543,47 +559,59 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/bower.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="27" selection-start="327" selection-end="327" vertical-scroll-proportion="0.23136246" vertical-offset="0" max-vertical-offset="778">
-          <folding />
-        </state>
+        <state line="12" column="27" selection-start="327" selection-end="327" vertical-scroll-proportion="0.23136246" vertical-offset="0" max-vertical-offset="778" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/register.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="50" selection-start="932" selection-end="932" vertical-scroll-proportion="-11.25" vertical-offset="0" max-vertical-offset="465">
+        <state line="18" column="50" selection-start="932" selection-end="932" vertical-scroll-proportion="-11.25" vertical-offset="0" max-vertical-offset="465" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="48" column="7" selection-start="1771" selection-end="1771" vertical-scroll-proportion="0.0" vertical-offset="720" max-vertical-offset="1710">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/bower_components/dreamfactory/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1365">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/bower_components/dreamfactory/readme.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="766">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/bower_components/dreamfactory/lib/sdk-init.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="51" selection-start="358" selection-end="372" vertical-scroll-proportion="0.15665796" vertical-offset="0" max-vertical-offset="766">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/bower_components/dreamfactory/lib/shred.bundle.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-10.926893" vertical-offset="8370" max-vertical-offset="52035">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/bower_components/dreamfactory/lib/swagger.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1110" column="40" selection-start="37715" selection-end="37715" vertical-scroll-proportion="0.31216216" vertical-offset="16419" max-vertical-offset="18660">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/bower_components/dreamfactory/dreamfactory.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="45" selection-start="684" selection-end="684" vertical-scroll-proportion="0.37262356" vertical-offset="6" max-vertical-offset="795">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="41" selection-start="1848" selection-end="1848" vertical-scroll-proportion="0.0" vertical-offset="188" max-vertical-offset="990">
-          <folding>
-            <marker date="1391792183000" expanded="true" signature="1767:1958" placeholder="[...]" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="7" selection-start="1771" selection-end="1771" vertical-scroll-proportion="-30.0" vertical-offset="0" max-vertical-offset="1710">
-          <folding>
-            <marker date="1391791217000" expanded="true" signature="958:1111" placeholder="..." />
-            <marker date="1391791217000" expanded="true" signature="1051:1079" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/controllers/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="44" selection-start="868" selection-end="868" vertical-scroll-proportion="0.0" vertical-offset="225" max-vertical-offset="2445">
+        <state line="36" column="65" selection-start="1642" selection-end="1642" vertical-scroll-proportion="0.68441063" vertical-offset="0" max-vertical-offset="810">
           <folding />
         </state>
       </provider>
@@ -595,18 +623,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/services/services.js">
+    <entry file="file://$PROJECT_DIR$/app/scripts/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="35" selection-start="1159" selection-end="1159" vertical-scroll-proportion="-5.769231" vertical-offset="0" max-vertical-offset="1650">
-          <folding>
-            <element signature="e#87#992#0" expanded="false" />
-          </folding>
+        <state line="10" column="36" selection-start="280" selection-end="280" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="990">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/controllers/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="57" column="26" selection-start="1329" selection-end="1329" vertical-scroll-proportion="0.0" vertical-offset="435" max-vertical-offset="3465">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/main.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="14" selection-start="418" selection-end="418" vertical-scroll-proportion="0.2506427" vertical-offset="0" max-vertical-offset="778">
+        <state line="24" column="38" selection-start="730" selection-end="730" vertical-scroll-proportion="-7.2" vertical-offset="0" max-vertical-offset="615">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/services/services.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="285" column="0" selection-start="25142" selection-end="25142" vertical-scroll-proportion="5.418251" vertical-offset="0" max-vertical-offset="5325">
           <folding />
         </state>
       </provider>

@@ -7,8 +7,8 @@ angular.module('triviaApp', [
         'triviaApp.directives',
         'triviaApp.services'
     ])
-    .constant('DSP_URL', 'https://dsp-movie.cloud.dreamfactory.com')
-    .constant('DSP_API_KEY', 'Movies')
+    .constant('DSP_URL', 'https://next.cloud.dreamfactory.com')
+    .constant('DSP_API_KEY', 'trivia')
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider
             .when('/', {

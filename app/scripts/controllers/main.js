@@ -16,30 +16,103 @@ angular.module('triviaApp')
             });
         }])
 
-    .controller('ErrorsCtrl', ['$scope', function($scope) {
+    .controller('ErrorsCtrl', ['$scope', function ($scope) {
 
         $scope.errors = [];
 
 
-        $scope.$on('app:error', function(e, error) {
+        $scope.$on('app:error', function (e, error) {
 
             $scope.errors.push(error);
         });
 
-        $scope.$on('app:error:clear', function(e) {
+        $scope.$on('app:error:clear', function (e) {
 
             $scope.errors = [];
         })
 
 
-
     }])
-    .controller('TriviaCtrl', ['$scope', 'MovieService', 'UserService', function ($scope, MovieService, UserService) {
+    .controller('TriviaCtrl', ['$scope', 'DreamFactory', 'UserService', 'MovieService', 'makeQuestion', 'StringService',
+        function ($scope, DreamFactory, UserService, MovieService, makeQuestion, StringService) {
 
 
-        $scope.user = UserService.getUser();
 
-    }])
+            // Public vars
+            $scope.user = UserService.getUser();
+            $scope.question = '';
+            $scope.userAnswer = '';
+
+            // Private vars
+            var actualAnswer = '';
+
+
+            // Public API
+            $scope.verifyAnswer = function(userAnswer) {
+
+                $scope.$broadcast('verifyAnswer', userAnswer)
+            };
+
+
+
+            // Private Api
+            function _storeQuestionAnswer(QAObj) {
+
+                $scope.question = QAObj.question;
+                actualAnswer = QAObj.answer;
+                console.log(answer)
+            }
+
+
+            function _verifyAnswer(userAnswer) {
+
+               return StringService.areIdentical(userAnswer.toLowerCase(), answer.toLowerCase()) ? true : false;
+            }
+
+            function _resetForm() {
+
+                $scope.userAnswer = '';
+            }
+
+
+            // Handle Messages
+
+            $scope.$on('DreamFactory:api:ready', function (e) {
+
+                $scope.$broadcast('getMovie');
+            });
+
+
+            $scope.$on('getMovie', function () {
+
+                MovieService.getMovie().then(
+                    function(result) {
+
+                    _storeQuestionAnswer(makeQuestion.questionBuilder(result));
+
+                },function(reason) {
+
+                        $scope.$broadcast('getMovie');
+                    });
+            });
+
+            $scope.$on('verifyAnswer', function(e, userAnswer) {
+
+
+                if (_verifyAnswer(userAnswer)) {
+                    console.log('Correct');
+
+
+                }else {
+                    console.log('Incorrect');
+
+                }
+
+                _resetForm();
+                $scope.$broadcast('getMovie');
+
+            });
+        }])
     .controller('LoginCtrl', ['$scope', '$rootScope', '$location', 'UserService', 'DreamFactory',
         function ($scope, $rootScope, $location, UserService, DreamFactory) {
 
@@ -60,8 +133,6 @@ angular.module('triviaApp')
             // Private API
 
 
-
-
             // Handle Messages
             $scope.$on('user:login', function (e, creds) {
 
@@ -72,14 +143,14 @@ angular.module('triviaApp')
                 };
 
                 DreamFactory.api.user.login(postData,
-                    function(data) {
+                    function (data) {
                         UserService.setUser(data);
                         $rootScope.$broadcast('user:loggedIn');
                         $location.url('/');
                         $scope.$apply();
                     },
-                    function(data) {
-                        $scope.$apply(function() {
+                    function (data) {
+                        $scope.$apply(function () {
                             throw {message: 'Unable to login.'}
 
                         })
@@ -113,15 +184,10 @@ angular.module('triviaApp')
             };
 
 
-
-
             // Private API
             function _verifyPassword(creds) {
                 return StringService.areIdentical(creds.password, creds.confirm);
             }
-
-
-
 
 
             // Handle Messages
@@ -148,10 +214,12 @@ angular.module('triviaApp')
                     },
                     function (data) {
 
-                        $scope.$apply(function() {
+                        $scope.$apply(function () {
 
                             throw {message: 'Unable to Register.'}
                         })
                     });
             })
         }]);
+
+
