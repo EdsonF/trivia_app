@@ -25,11 +25,12 @@ angular.module('triviaApp', [
             })
             .when('/logout', {
                 resolve: {
-                    logout: ['$location', '$rootScope', 'UserService', 'DreamFactory',
-                        function ($location, $rootScope, UserService, DreamFactory) {
+                    logout: ['$location', '$rootScope', 'UserService', 'DreamFactory', 'ScoreKeeper',
+                        function ($location, $rootScope, UserService, DreamFactory, ScoreKeeper) {
 
                             DreamFactory.api.user.logout();
                             UserService.unsetUser();
+                            ScoreKeeper.resetScore();
                             $rootScope.$broadcast('user:logout');
                             $location.url('/');
 

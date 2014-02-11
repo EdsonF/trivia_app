@@ -33,26 +33,29 @@ angular.module('triviaApp')
 
 
     }])
-    .controller('TriviaCtrl', ['$scope', 'DreamFactory', 'UserService', 'MovieService', 'makeQuestion', 'StringService',
-        function ($scope, DreamFactory, UserService, MovieService, makeQuestion, StringService) {
-
+    .controller('TriviaCtrl', ['$scope', 'DreamFactory', 'UserService', 'MovieService', 'makeQuestion', 'StringService', 'ScoreKeeper',
+        function ($scope, DreamFactory, UserService, MovieService, makeQuestion, StringService, ScoreKeeper) {
 
 
             // Public vars
             $scope.user = UserService.getUser();
+            $scope.score = ScoreKeeper.getScore();
             $scope.question = '';
             $scope.userAnswer = '';
 
             // Private vars
             var actualAnswer = '';
 
+            $scope.init = function () {
+                $scope.$broadcast('getMovie');
+            };
+
 
             // Public API
-            $scope.verifyAnswer = function(userAnswer) {
+            $scope.verifyAnswer = function (userAnswer) {
 
                 $scope.$broadcast('verifyAnswer', userAnswer)
             };
-
 
 
             // Private Api
@@ -60,18 +63,40 @@ angular.module('triviaApp')
 
                 $scope.question = QAObj.question;
                 actualAnswer = QAObj.answer;
-                console.log(answer)
+                console.log(actualAnswer)
             }
-
 
             function _verifyAnswer(userAnswer) {
 
-               return StringService.areIdentical(userAnswer.toLowerCase(), answer.toLowerCase()) ? true : false;
+                return StringService.areIdentical(userAnswer.toLowerCase(), actualAnswer.toLowerCase()) ? true : false;
             }
+
 
             function _resetForm() {
 
                 $scope.userAnswer = '';
+            }
+
+            function _saveUserScore() {
+
+                if (!UserService.isLoggedIn()) return false;
+
+                var record = {
+                    table_name: 'TriviaScore',
+                    id: UserService.getUser().id,
+                    id_field: 'user',
+                    body: {
+                        score: ScoreKeeper.getScore()
+                    }
+                };
+
+                ScoreKeeper.updateScoreRecord(record).then(
+                    function (result) {
+                        console.log('Score Saved')
+                    },
+                    function (reason) {
+                        console.log(reason)
+                    });
             }
 
 
@@ -86,35 +111,42 @@ angular.module('triviaApp')
             $scope.$on('getMovie', function () {
 
                 MovieService.getMovie().then(
-                    function(result) {
+                    function (result) {
 
-                    _storeQuestionAnswer(makeQuestion.questionBuilder(result));
+                        _storeQuestionAnswer(makeQuestion.questionBuilder(result));
 
-                },function(reason) {
+                    }, function (reason) {
 
+                        console.log(reason);
                         $scope.$broadcast('getMovie');
                     });
             });
 
-            $scope.$on('verifyAnswer', function(e, userAnswer) {
+            $scope.$on('verifyAnswer', function (e, userAnswer) {
 
 
                 if (_verifyAnswer(userAnswer)) {
-                    console.log('Correct');
+                    $scope.score = ScoreKeeper.incrementScore();
 
-
-                }else {
-                    console.log('Incorrect');
+                } else {
+                    $scope.score = ScoreKeeper.decrementScore();
 
                 }
 
+
+                _saveUserScore();
                 _resetForm();
                 $scope.$broadcast('getMovie');
 
             });
+
+
+            // Init from login
+            $scope.init();
+
         }])
-    .controller('LoginCtrl', ['$scope', '$rootScope', '$location', 'UserService', 'DreamFactory',
-        function ($scope, $rootScope, $location, UserService, DreamFactory) {
+    .controller('LoginCtrl', ['$scope', '$rootScope', '$location', 'UserService', 'DreamFactory', 'ScoreKeeper',
+        function ($scope, $rootScope, $location, UserService, DreamFactory, ScoreKeeper) {
 
 
             // Vars
@@ -145,9 +177,24 @@ angular.module('triviaApp')
                 DreamFactory.api.user.login(postData,
                     function (data) {
                         UserService.setUser(data);
-                        $rootScope.$broadcast('user:loggedIn');
-                        $location.url('/');
-                        $scope.$apply();
+
+                        ScoreKeeper.getScoreRecord(data).then(
+                            function (result) {
+                                ScoreKeeper.setScore(result.score);
+                                $rootScope.$broadcast('user:loggedIn');
+                                $location.url('/');
+                            },
+                            function (reason) {
+
+                                ScoreKeeper.createScoreRecord(data).then(
+                                    function (result) {
+                                        $rootScope.$broadcast('user:loggedIn');
+                                        $location.url('/');
+                                    },
+                                    function (reason) {
+                                        console.log(reason)
+                                    });
+                            });
                     },
                     function (data) {
                         $scope.$apply(function () {
@@ -157,8 +204,8 @@ angular.module('triviaApp')
                     });
             })
         }])
-    .controller('RegisterCtrl', ['$scope', '$rootScope', '$location', 'StringService', 'DreamFactory', 'UserService',
-        function ($scope, $rootScope, $location, StringService, DreamFactory, UserService) {
+    .controller('RegisterCtrl', ['$scope', '$rootScope', '$location', 'StringService', 'DreamFactory', 'UserService', 'ScoreKeeper',
+        function ($scope, $rootScope, $location, StringService, DreamFactory, UserService, ScoreKeeper) {
 
             // Vars
             $scope.creds = {
@@ -207,10 +254,17 @@ angular.module('triviaApp')
 
                 DreamFactory.api.user.register(data,
                     function (data) {
+
                         UserService.setUser(data);
-                        $rootScope.$broadcast('user:loggedIn');
-                        $location.url('/');
-                        $scope.$apply();
+                        ScoreKeeper.createScoreRecord(data).then(
+                            function (result) {
+                                $rootScope.$broadcast('user:loggedIn');
+                                $location.url('/');
+                            },
+                            function (reason) {
+                                console.log(reason)
+                            });
+
                     },
                     function (data) {
 

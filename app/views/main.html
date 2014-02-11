@@ -1,35 +1,48 @@
-<div class="row">
-    <div class="small-6 small-offset-3 columns">
-        <h1>Main Page</h1>
 
-        <div data-ng-hide="user.displayName !== 'Guest'">
-            <p>You are a Guest</p>
+<!-- User Information Display -->
+<div class="row">
+    <div class="small-12 large-10 large-offset-1 columns">
+
+        <!-- User Display -->
+        <div class="small-6 large-6 columns">
+
+            <!-- User Name Display -->
+            <div data-ng-hide="user.displayName !== 'Guest'">
+                <p>You are a Guest</p>
+            </div>
+
+            <div data-ng-show="user.displayName !== 'Guest'">
+                <p>{{user.displayName}}</p>
+            </div>
         </div>
 
-        <div data-ng-show="user.displayName !== 'Guest'">
-            <ul>
-                <li>Logged in as: {{user.displayName}}</li>
-                <li>Current sessionId: {{user.sessionId}}</li>
-            </ul>
+        <!-- User Score Display -->
+        <div class="small-6 large-6 columns">
+            <p style="float: right">Score: {{score}}</p>
         </div>
     </div>
 </div>
 
-        <div class="row">
-            <div class="small-6 small-offset-3 columns">
-                <h1>{{question}}</h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="small-6 small-offset-4 columns">
-                <form name="answerForm">
-                    <input type="text" id="answer" data-ng-model="userAnswer">
-                </form>
-            </div>
-        </div>
 
+<!-- Question Display -->
 <div class="row">
-    <div class="small-6 small-offset-3 columns">
-        <button type="button" data-ng-click="verifyAnswer(userAnswer)">Submit Answer</button>
+    <div style="margin-top: 100px; margin-bottom: 30px;"class="small-12 large-6 large-offset-3 columns">
+        <h2>{{question}}</h2>
+    </div>
+</div>
+
+<!-- Answer Display -->
+<div class="row">
+    <div class="small-12 large-6 large-offset-3 columns">
+        <form name="answerForm">
+            <input type="text" id="answer" data-ng-model="userAnswer">
+        </form>
+    </div>
+</div>
+
+<!-- Submit Answer Display -->
+<div class="row">
+    <div class="small-12 large-6 large-offset-3 columns">
+        <button class="button expand" type="button" data-ng-click="verifyAnswer(userAnswer)">Submit Answer</button>
     </div>
 </div>
