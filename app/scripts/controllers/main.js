@@ -6,7 +6,6 @@ angular.module('triviaApp')
 
             $scope.loggedIn = false;
 
-
             $scope.$on('user:loggedIn', function (e) {
                 $scope.loggedIn = true;
             });
@@ -20,7 +19,6 @@ angular.module('triviaApp')
 
         $scope.errors = [];
 
-
         $scope.$on('app:error', function (e, error) {
 
             $scope.errors.push(error);
@@ -30,8 +28,6 @@ angular.module('triviaApp')
 
             $scope.errors = [];
         })
-
-
     }])
     .controller('TriviaCtrl', ['$scope', 'DreamFactory', 'UserService', 'MovieService', 'makeQuestion', 'StringService', 'ScoreKeeper',
         function ($scope, DreamFactory, UserService, MovieService, makeQuestion, StringService, ScoreKeeper) {
@@ -42,12 +38,16 @@ angular.module('triviaApp')
             $scope.score = ScoreKeeper.getScore();
             $scope.question = '';
             $scope.userAnswer = '';
+            $scope.cheatAnswer = '';
 
             // Private vars
-            var actualAnswer = '';
+            var actualAnswer = $scope.cheatAnswer;
 
             $scope.init = function () {
-                $scope.$broadcast('getMovie');
+
+                if (DreamFactory.isReady()) {
+                    $scope.$broadcast('getMovie');
+                }
             };
 
 
@@ -62,8 +62,7 @@ angular.module('triviaApp')
             function _storeQuestionAnswer(QAObj) {
 
                 $scope.question = QAObj.question;
-                actualAnswer = QAObj.answer;
-                console.log(actualAnswer)
+                $scope.cheatAnswer = QAObj.answer;
             }
 
             function _verifyAnswer(userAnswer) {
@@ -102,7 +101,7 @@ angular.module('triviaApp')
 
             // Handle Messages
 
-            $scope.$on('DreamFactory:api:ready', function (e) {
+            $scope.$on('api:ready', function (e) {
 
                 $scope.$broadcast('getMovie');
             });
@@ -117,7 +116,6 @@ angular.module('triviaApp')
 
                     }, function (reason) {
 
-                        console.log(reason);
                         $scope.$broadcast('getMovie');
                     });
             });
@@ -126,18 +124,16 @@ angular.module('triviaApp')
 
 
                 if (_verifyAnswer(userAnswer)) {
+
                     $scope.score = ScoreKeeper.incrementScore();
-
                 } else {
+
                     $scope.score = ScoreKeeper.decrementScore();
-
                 }
-
 
                 _saveUserScore();
                 _resetForm();
                 $scope.$broadcast('getMovie');
-
             });
 
 
@@ -171,8 +167,8 @@ angular.module('triviaApp')
 
                 var postData = {
                     body: creds
+                }
 
-                };
 
                 DreamFactory.api.user.login(postData,
                     function (data) {
@@ -197,10 +193,7 @@ angular.module('triviaApp')
                             });
                     },
                     function (data) {
-                        $scope.$apply(function () {
-                            throw {message: 'Unable to login.'}
-
-                        })
+                        throw {message: 'Unable to login.'}
                     });
             })
         }])
@@ -256,6 +249,7 @@ angular.module('triviaApp')
                     function (data) {
 
                         UserService.setUser(data);
+
                         ScoreKeeper.createScoreRecord(data).then(
                             function (result) {
                                 $rootScope.$broadcast('user:loggedIn');
@@ -264,14 +258,10 @@ angular.module('triviaApp')
                             function (reason) {
                                 console.log(reason)
                             });
-
                     },
                     function (data) {
 
-                        $scope.$apply(function () {
-
-                            throw {message: 'Unable to Register.'}
-                        })
+                        throw {message: 'Unable to Register.'}
                     });
             })
         }]);

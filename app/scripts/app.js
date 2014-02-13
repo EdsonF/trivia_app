@@ -57,6 +57,5 @@ angular.module('triviaApp', [
 
             $rootScope.$broadcast('app:error:clear');
 
-
         })
     }])
