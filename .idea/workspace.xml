@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="44e99417-f93f-4a43-b9d3-a649e9700afd" name="Default" comment="Add autocomplete=&quot;off&quot; to register and login fields.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/styles.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/index.html" afterPath="$PROJECT_DIR$/app/index.html" />
+    <list default="true" id="44e99417-f93f-4a43-b9d3-a649e9700afd" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="triviaapp.iws" />
@@ -26,7 +25,17 @@
     <favorites_list name="triviaapp" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="5" selection-start="61" selection-end="61" vertical-scroll-proportion="0.09351621" vertical-offset="0" max-vertical-offset="802">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -58,6 +67,7 @@
         <option value="$PROJECT_DIR$/app/views/register.html" />
         <option value="$PROJECT_DIR$/app/scripts/services/services.js" />
         <option value="$PROJECT_DIR$/app/scripts/controllers/main.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -358,7 +368,11 @@
       <created>1392327439160</created>
       <updated>1392327439160</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Add styles.css">
+      <created>1392654190615</created>
+      <updated>1392654190615</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -401,7 +415,8 @@
     <MESSAGE value="Add get Movie service.  Add Question maker service.  Add question UI." />
     <MESSAGE value="Refactored ngDreamFactory service.  Refactored app for new ngDreamFactory.  Add cheat." />
     <MESSAGE value="Add foundation.scss to _base.scss.  Compile scss" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add foundation.scss to _base.scss.  Compile scss" />
+    <MESSAGE value="Add styles.css" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add styles.css" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -633,13 +648,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="802">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/register.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="104" selection-start="608" selection-end="608" vertical-scroll-proportion="0.23136246" vertical-offset="0" max-vertical-offset="778">
@@ -691,6 +699,13 @@
             <marker date="1392329724000" expanded="true" signature="-1:-1" placeholder="..." />
             <marker date="1392329724000" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="5" selection-start="61" selection-end="61" vertical-scroll-proportion="0.09351621" vertical-offset="0" max-vertical-offset="802">
+          <folding />
         </state>
       </provider>
     </entry>
