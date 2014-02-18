@@ -2,7 +2,6 @@
 
 angular.module('triviaApp', [
         'ngRoute',
-        'ngResource',
         'ngDreamFactory',
         'triviaApp.directives',
         'triviaApp.services'

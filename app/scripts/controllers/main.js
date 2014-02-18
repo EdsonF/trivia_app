@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('triviaApp')
-    .controller('NavCtrl', ['$scope', 'UserService',
+    .controller('NavCtrl', ['$scope',
         function ($scope) {
 
             $scope.loggedIn = false;
@@ -14,7 +14,6 @@ angular.module('triviaApp')
                 $scope.loggedIn = false;
             });
         }])
-
     .controller('ErrorsCtrl', ['$scope', function ($scope) {
 
         $scope.errors = [];
@@ -29,8 +28,8 @@ angular.module('triviaApp')
             $scope.errors = [];
         })
     }])
-    .controller('TriviaCtrl', ['$scope', 'DreamFactory', 'UserService', 'MovieService', 'makeQuestion', 'StringService', 'ScoreKeeper',
-        function ($scope, DreamFactory, UserService, MovieService, makeQuestion, StringService, ScoreKeeper) {
+    .controller('TriviaCtrl', ['$scope', 'DreamFactory', 'UserService', 'MovieService', 'MakeQuestion', 'StringService', 'ScoreKeeper',
+        function ($scope, DreamFactory, UserService, MovieService, MakeQuestion, StringService, ScoreKeeper) {
 
 
             // Public vars
@@ -41,7 +40,7 @@ angular.module('triviaApp')
             $scope.cheatAnswer = '';
 
             // Private vars
-            var actualAnswer = $scope.cheatAnswer;
+            $scope._actualAnswer = '';
 
             $scope.init = function () {
 
@@ -59,24 +58,25 @@ angular.module('triviaApp')
 
 
             // Private Api
-            function _storeQuestionAnswer(QAObj) {
+            $scope._storeQuestionAnswer = function(QAObj) {
 
                 $scope.question = QAObj.question;
                 $scope.cheatAnswer = QAObj.answer;
-            }
+                $scope._actualAnswer = QAObj.answer;
+            };
 
-            function _verifyAnswer(userAnswer) {
+            $scope._verifyAnswer = function (userAnswer) {
 
-                return StringService.areIdentical(userAnswer.toLowerCase(), actualAnswer.toLowerCase()) ? true : false;
-            }
+                return StringService.areIdentical(userAnswer.toLowerCase(), $scope._actualAnswer.toLowerCase()) ? true : false;
+            };
 
 
-            function _resetForm() {
+            $scope._resetForm = function() {
 
                 $scope.userAnswer = '';
-            }
+            };
 
-            function _saveUserScore() {
+            $scope._saveUserScore = function() {
 
                 if (!UserService.isLoggedIn()) return false;
 
@@ -112,7 +112,7 @@ angular.module('triviaApp')
                 MovieService.getMovie().then(
                     function (result) {
 
-                        _storeQuestionAnswer(makeQuestion.questionBuilder(result));
+                        $scope._storeQuestionAnswer(MakeQuestion.questionBuilder(result));
 
                     }, function (reason) {
 
@@ -123,7 +123,7 @@ angular.module('triviaApp')
             $scope.$on('verifyAnswer', function (e, userAnswer) {
 
 
-                if (_verifyAnswer(userAnswer)) {
+                if ($scope._verifyAnswer(userAnswer)) {
 
                     $scope.score = ScoreKeeper.incrementScore();
                 } else {
@@ -131,8 +131,8 @@ angular.module('triviaApp')
                     $scope.score = ScoreKeeper.decrementScore();
                 }
 
-                _saveUserScore();
-                _resetForm();
+                $scope._saveUserScore();
+                $scope._resetForm();
                 $scope.$broadcast('getMovie');
             });
 
@@ -156,7 +156,6 @@ angular.module('triviaApp')
 
                 $scope.$broadcast('user:login', creds)
             };
-
 
             // Private API
 
@@ -225,15 +224,15 @@ angular.module('triviaApp')
 
 
             // Private API
-            function _verifyPassword(creds) {
+            $scope._verifyPassword = function (creds) {
                 return StringService.areIdentical(creds.password, creds.confirm);
-            }
+            };
 
 
             // Handle Messages
             $scope.$on('verify:password', function (e, creds) {
 
-                $scope.identical = _verifyPassword(creds);
+                $scope.identical = $scope._verifyPassword(creds);
             });
 
             $scope.$on('user:register', function (e, creds) {
@@ -264,6 +263,10 @@ angular.module('triviaApp')
                         throw {message: 'Unable to Register.'}
                     });
             })
-        }]);
+        }])
+    .controller('FakeCtrl', ['$scope', function($scope) {
+
+
+    }]);
 
 

@@ -228,6 +228,7 @@ angular.module('triviaApp.services', [])
                 .replace(/\w\"\"/g, "'\"" )
                 .replace(/\"(?=[^"]*$)/, '');
 
+                console.log(a);
 
             try {
                 return angular.fromJson(a);
@@ -278,7 +279,7 @@ angular.module('triviaApp.services', [])
             }
         }
     }])
-    .service('makeQuestion', [function () {
+    .service('MakeQuestion', [function () {
 
 
         function _getReleaseDate(movieObj) {
