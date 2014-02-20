@@ -68,12 +68,24 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
 }
 
-/* line 1, ../sass/partials/_base.scss */
-.has-error {
-  border-color: #ff0000 !important;
-  box-shadow: 0 0px 5px rgba(255, 0, 0, 0.5) !important;
-}
+/*
+New Syntax, allows to optionally calculate on a different base value to counter compounding effect of rem's.
+Call with 1, 2, 3 or 4 parameters, 'px' is not required but supported:
 
+  rem-calc(10 20 30px 40);
+
+Space delimited, if you want to delimit using comma's, wrap it in another pair of brackets
+
+  rem-calc((10, 20, 30, 40px));
+
+Optionally call with a different base (eg: 8px) to calculate rem.
+
+  rem-calc(16px 32px 48px, 8px);
+
+If you require to comma separate your list
+
+  rem-calc((16px, 32px, 48), 8px);
+*/
 /*
 New Syntax, allows to optionally calculate on a different base value to counter compounding effect of rem's.
 Call with 1, 2, 3 or 4 parameters, 'px' is not required but supported:
@@ -9142,58 +9154,13 @@ th.hide-for-touch {
   display: table-cell !important;
 }
 
-/*
-New Syntax, allows to optionally calculate on a different base value to counter compounding effect of rem's.
-Call with 1, 2, 3 or 4 parameters, 'px' is not required but supported:
-
-  rem-calc(10 20 30px 40);
-
-Space delimited, if you want to delimit using comma's, wrap it in another pair of brackets
-
-  rem-calc((10, 20, 30, 40px));
-
-Optionally call with a different base (eg: 8px) to calculate rem.
-
-  rem-calc(16px 32px 48px, 8px);
-
-If you require to comma separate your list
-
-  rem-calc((16px, 32px, 48), 8px);
-*/
-/* line 10, ../../bower_components/foundation/scss/foundation/components/_global.scss */
-meta.foundation-data-attribute-namespace {
-  font-family: false;
+/* line 9, ../sass/partials/_base.scss */
+.top-bar-dropshadow {
+  box-shadow: 0 0 20px #000;
 }
 
-/* line 28, ../../bower_components/foundation/scss/foundation/components/_global.scss */
-html, body {
-  height: 100%;
-}
-
-/*
-New Syntax, allows to optionally calculate on a different base value to counter compounding effect of rem's.
-Call with 1, 2, 3 or 4 parameters, 'px' is not required but supported:
-
-  rem-calc(10 20 30px 40);
-
-Space delimited, if you want to delimit using comma's, wrap it in another pair of brackets
-
-  rem-calc((10, 20, 30, 40px));
-
-Optionally call with a different base (eg: 8px) to calculate rem.
-
-  rem-calc(16px 32px 48px, 8px);
-
-If you require to comma separate your list
-
-  rem-calc((16px, 32px, 48), 8px);
-*/
-/* line 10, ../../bower_components/foundation/scss/foundation/components/_global.scss */
-meta.foundation-data-attribute-namespace {
-  font-family: false;
-}
-
-/* line 28, ../../bower_components/foundation/scss/foundation/components/_global.scss */
-html, body {
-  height: 100%;
+/* line 16, ../sass/partials/_base.scss */
+.has-error {
+  border-color: #ff0000 !important;
+  box-shadow: 0 0px 5px rgba(255, 0, 0, 0.5) !important;
 }

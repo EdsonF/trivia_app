@@ -28,8 +28,8 @@ angular.module('triviaApp')
             $scope.errors = [];
         })
     }])
-    .controller('TriviaCtrl', ['$scope', 'DreamFactory', 'UserService', 'MovieService', 'MakeQuestion', 'StringService', 'ScoreKeeper',
-        function ($scope, DreamFactory, UserService, MovieService, MakeQuestion, StringService, ScoreKeeper) {
+    .controller('TriviaCtrl', ['$scope', '$rootScope', 'DreamFactory', 'UserService', 'MovieService', 'MakeQuestion', 'StringService', 'ScoreKeeper',
+        function ($scope, $rootScope, DreamFactory, UserService, MovieService, MakeQuestion, StringService, ScoreKeeper) {
 
 
             // Public vars
@@ -41,6 +41,8 @@ angular.module('triviaApp')
 
             // Private vars
             $scope._actualAnswer = '';
+            $scope.counter = 0;
+
 
             $scope.init = function () {
 
@@ -91,7 +93,7 @@ angular.module('triviaApp')
 
                 ScoreKeeper.updateScoreRecord(record).then(
                     function (result) {
-                        console.log('Score Saved')
+                        console.log('Score Saved');
                     },
                     function (reason) {
                         console.log(reason)
@@ -109,15 +111,26 @@ angular.module('triviaApp')
 
             $scope.$on('getMovie', function () {
 
-                MovieService.getMovie().then(
-                    function (result) {
+                if($scope.counter < 5) {
+                    MovieService.getMovie().then(
+                        function (result) {
 
-                        $scope._storeQuestionAnswer(MakeQuestion.questionBuilder(result));
+                            $scope._storeQuestionAnswer(MakeQuestion.questionBuilder(result));
 
-                    }, function (reason) {
+                        }, function (reason) {
 
-                        $scope.$broadcast('getMovie');
-                    });
+                            console.log('failure to get movie');
+                            $scope.$broadcast('getMovie');
+                            $scope.counter++
+                        });
+                }else {
+
+                    var error = {message: 'Can\'t connect ot server'};
+
+                    console.log('MovieOperation Failed');
+                    $rootScope.$broadcast('app:error', error);
+                }
+
             });
 
             $scope.$on('verifyAnswer', function (e, userAnswer) {
@@ -171,7 +184,12 @@ angular.module('triviaApp')
 
                 DreamFactory.api.user.login(postData,
                     function (data) {
+
+
+
                         UserService.setUser(data);
+
+
 
                         ScoreKeeper.getScoreRecord(data).then(
                             function (result) {
@@ -248,6 +266,8 @@ angular.module('triviaApp')
                     function (data) {
 
                         UserService.setUser(data);
+                        console.log(UserService.getUser());
+
 
                         ScoreKeeper.createScoreRecord(data).then(
                             function (result) {
@@ -263,10 +283,5 @@ angular.module('triviaApp')
                         throw {message: 'Unable to Register.'}
                     });
             })
-        }])
-    .controller('FakeCtrl', ['$scope', function($scope) {
-
-
-    }]);
-
+        }]);
 

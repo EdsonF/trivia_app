@@ -193,7 +193,6 @@ angular.module('triviaApp.services', [])
             DreamFactory.api.movies.getMovies({"q": _generateSearchTerm()},
 
                 function (data) {
-
                     defer.resolve(data);
                 },
                 function (data) {
@@ -227,8 +226,6 @@ angular.module('triviaApp.services', [])
                 .replace(/\"\./g, "' ")
                 .replace(/\w\"\"/g, "'\"" )
                 .replace(/\"(?=[^"]*$)/, '');
-
-                console.log(a);
 
             try {
                 return angular.fromJson(a);
@@ -364,7 +361,6 @@ angular.module('triviaApp.services', [])
                 if (actors.length == 1) {
 
                     _question += actors[0].name + '?';
-                    console.log(actors);
                 } else {
                     angular.forEach(actors, function (actor, i) {
 
@@ -393,7 +389,7 @@ angular.module('triviaApp.services', [])
                 }
 
                 return {
-                    question: 'Who played ' + role.characters[0] + ' in ' + _getReleaseDate(movieObj) + '\'s "' + _getTitle(movieObj) + '" ?',
+                    question: 'Who played ' + role.characters[0] + ' in ' + _getReleaseDate(movieObj) + '\'s "' + _getTitle(movieObj) + '"?',
                     answer: role.name
                 }
 
@@ -583,7 +579,6 @@ angular.module('triviaApp.services', [])
                     },
                     function (reason) {
 
-                        console.log(reason);
                         defer.reject(reason)
 
                     });

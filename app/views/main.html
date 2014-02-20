@@ -7,18 +7,14 @@
         <div class="small-6 large-6 columns">
 
             <!-- User Name Display -->
-            <div data-ng-hide="user.displayName !== 'Guest'">
-                <p>You are a Guest</p>
-            </div>
-
-            <div data-ng-show="user.displayName !== 'Guest'">
-                <p>{{user.displayName}}</p>
+            <div>
+                <p id="user-name-display">User: {{user.displayName}}</p>
             </div>
         </div>
 
         <!-- User Score Display -->
         <div class="small-6 large-6 columns">
-            <p style="float: right">Score: {{score}}</p>
+            <p id="score" style="float: right">Score: {{score}}</p>
         </div>
     </div>
 </div>
@@ -26,8 +22,8 @@
 
 <!-- Question Display -->
 <div class="row">
-    <div style="margin-top: 50px; margin-bottom: 30px;"class="small-12 large-6 large-offset-3 columns">
-        <h4>{{question}}</h4>
+    <div style="margin-top: 50px; margin-bottom: 30px;" class="small-12 large-6 large-offset-3 columns">
+        <h4 id="question">{{question}}</h4>
     </div>
 </div>
 
@@ -43,7 +39,7 @@
 <!-- Submit Answer Display -->
 <div class="row">
     <div class="small-12 large-6 large-offset-3 columns">
-        <button class="button expand" type="button" data-ng-click="verifyAnswer(userAnswer)">Submit Answer</button>
+        <button id="submit-answer" class="button expand" type="button" data-ng-click="verifyAnswer(userAnswer)">Submit Answer</button>
     </div>
 </div>
 
@@ -51,6 +47,6 @@
 <!-- Cheat Display-->
 <div class="row">
     <div class="small-12 large-6 large-offset-3 columns">
-        <p class="error">{{cheatAnswer}}</p>
+        <p id="cheat-answer" class="error">{{cheatAnswer}}</p>
     </div>
 </div>

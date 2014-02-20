@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="styles.css">
     <!-- endbuild -->
 </head>
-<body ng-app="triviaApp">
+<body data-ng-app="triviaApp">
 <!--[if lt IE 7]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
     your browser</a> to improve your experience.</p>
@@ -32,16 +32,16 @@
 
 
 <!-- Add your site or application content here -->
-<nav class="top-bar" data-ng-controller="NavCtrl" data-topbar>
+<nav class="top-bar top-bar-dropshadow" data-ng-controller="NavCtrl" data-topbar>
     <ul class="title-area">
         <li class="name"><h1><a href="#">Movie Trivia App</a></h1></li>
     </ul>
     <section class="top-bar-section">
         <!-- Right Nav Section -->
         <ul class="right">
-            <li data-ng-hide="loggedIn"><a href="#/login">Login</a></li>
-            <li data-ng-hide="loggedIn"><a href="#/register">Register</a></li>
-            <li data-ng-show="loggedIn"><a href="#/logout">Logout</a></li>
+            <li id="login-btn-container" data-ng-hide="loggedIn"><a id="login" href="#/login">Login</a></li>
+            <li id="register-btn-container" data-ng-hide="loggedIn"><a id="register" href="#/register">Register</a></li>
+            <li id="logout-btn-container" data-ng-show="loggedIn"><a id="logout" href="#/logout">Logout</a></li>
         </ul>
     </section>
 </nav>
@@ -85,17 +85,19 @@
 
 <!-- build:js scripts/vendor.js -->
 <!-- bower:js -->
-<script src="bower_components/jquery/jquery.js"></script>
-<script src="bower_components/jquery.cookie/jquery.cookie.js"></script>
-<script src="bower_components/jquery-placeholder/jquery.placeholder.js"></script>
-<script src="bower_components/jquery-validation/jquery.validate.js"></script>
 <script src="bower_components/modernizr/modernizr.js"></script>
+<script src="bower_components/jquery/jquery.js"></script>
 <script src="bower_components/angular/angular.js"></script>
-<script src="bower_components/angular-route/angular-route.js"></script>
-<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
 <script src="bower_components/dreamfactory/dreamfactory.js"></script>
+<script src="bower_components/fastclick/lib/fastclick.js"></script>
+<script src="bower_components/jquery.cookie/jquery.cookie.js"></script>
 <script src="bower_components/foundation/js/foundation.js"></script>
-<script src="bower_components/foundation/js/foundation/foundation.abide.js"></script>
+<script src="bower_components/jquery-validation/jquery.validate.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-mocks/angular-mocks.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 

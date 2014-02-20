@@ -80,13 +80,211 @@ angular.module('triviaApp.mocks', [])
                         {"name": "Jack Kehoe", "id": "351527442", "characters": ["Jim Delgado"]},
                         {"name": "Michael J. Pollard", "id": "359853588", "characters": ["Little Red"]}
                     ], "alternate_ids": {"imdb": "0081150"}, "links": {"self": "http://api.rottentomatoes.com/api/public/v1.0/movies/16815.json", "alternate": "http://www.rottentomatoes.com/m/melvin_and_howard/", "cast": "http://api.rottentomatoes.com/api/public/v1.0/movies/16815/cast.json", "clips": "http://api.rottentomatoes.com/api/public/v1.0/movies/16815/clips.json", "reviews": "http://api.rottentomatoes.com/api/public/v1.0/movies/16815/reviews.json", "similar": "http://api.rottentomatoes.com/api/public/v1.0/movies/16815/similar.json"}}
-                ], "links": {"self": "http://api.rottentomatoes.com/api/public/v1.0/movies.json?q=Melvin+and+Howard&page_limit=30&page=1"}, "link_template": "http://api.rottentomatoes.com/api/public/v1.0/movies.json?q={search-term}&page_limit={results-per-page}&page={page-number}"}
+                ], "links": {"self": "http://api.rottentomatoes.com/api/public/v1.0/movies.json?q=Melvin+and+Howard&page_limit=30&page=1"}, "link_template": "http://api.rottentomatoes.com/api/public/v1.0/movies.json?q={search-term}&page_limit={results-per-page}&page={page-number}"};
 
 
                 var defer = $q.defer();
                 defer.resolve(movie);
                 return defer.promise;
 
+            }
+        }
+    }])
+    .service('ScoreKeeperMock', ['$q', function ($q) {
+
+        var total = 0,
+            itemValue = 10;
+
+        function _incrementTotal() {
+            total += itemValue;
+        }
+
+        function _decrementTotal() {
+            total -= itemValue;
+        }
+
+        function _setItemValue(itemValueInt) {
+            itemValue = itemValueInt
+        }
+
+        function _getItemValue() {
+            return itemValue;
+        }
+
+        function _getTotal() {
+            return total;
+        }
+
+        function _setTotal(totalInt) {
+            total = totalInt;
+        }
+
+        function _createRecord(recordData) {
+
+            var defer = $q.defer();
+
+            /*
+            DreamFactory.api.db.createRecord(recordData,
+                function (data) {
+
+                    defer.resolve(data);
+                },
+                function (data) {
+
+                    defer.reject(data);
+                });
+                */
+
+            return defer.promise;
+        }
+
+
+        function _updateRecord(recordData) {
+
+            var defer = $q.defer();
+
+            /*
+            DreamFactory.api.db.updateRecord(recordData,
+                function (data) {
+
+                    defer.resolve(data);
+                },
+                function (data) {
+
+                    defer.reject(data);
+                })
+
+*/
+            return defer.promise;
+        }
+
+        function _getRecord(recordData) {
+
+            var defer = $q.defer();
+
+            /*
+            DreamFactory.api.db.getRecord(recordData,
+                function (data) {
+
+                    if (typeof data == 'string') {
+                        defer.reject(data);
+                    } else {
+                        defer.resolve(data);
+
+                    }
+                },
+                function (data) {
+
+
+                    defer.reject(data)
+                });
+                */
+
+            return defer.promise;
+
+        }
+
+
+        return {
+
+            incrementScore: function () {
+
+                _incrementTotal();
+                return this.getScore();
+            },
+
+            decrementScore: function () {
+
+                _decrementTotal();
+                return this.getScore();
+            },
+
+            getScore: function () {
+
+                return _getTotal();
+            },
+
+            setScore: function (scoreInt) {
+
+                _setTotal(scoreInt)
+            },
+
+            resetScore: function () {
+                this.setScore(0);
+            },
+
+            createScoreRecord: function (userData) {
+
+                var defer = $q.defer(),
+                    record = {
+                        table_name: 'TriviaScore',
+                        id: userData.id,
+                        body: {
+                            user: userData.id,
+                            score: 0
+                        }
+                    };
+
+                _createRecord(record).then(
+                    function (result) {
+
+                        defer.resolve(result);
+
+                    },
+                    function (reason) {
+
+                        defer.reject(reason)
+
+                    });
+
+                return defer.promise;
+
+            },
+
+            updateScoreRecord: function (recordData) {
+
+                var defer = $q.defer();
+
+                defer.resolve(recordData);
+
+                return defer.promise;
+            },
+
+            getScoreRecord: function (userData) {
+
+                var defer = $q.defer(),
+                    recordData = {
+                        table_name: 'TriviaScore',
+                        id: userData.id,
+                        id_field: 'user'
+                    };
+
+
+                _getRecord(recordData).then(
+                    function (result) {
+
+                        defer.resolve(result);
+
+                    },
+                    function (reason) {
+
+                        console.log(reason);
+                        defer.reject(reason)
+
+                    });
+
+                return defer.promise;
+
+            },
+
+            setQuestionValue: function (questionValue) {
+
+                _setItemValue(questionValue);
+            },
+
+            getQuestionValue: function () {
+
+                return _getItemValue()
             }
         }
     }]);
