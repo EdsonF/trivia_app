@@ -10,7 +10,6 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/triviaapp.iml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
     </list>
     <ignored path="triviaapp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -342,7 +341,11 @@
       <created>1393278170270</created>
       <updated>1393278170270</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Remove .idea.  Update .gitignore.&#10;">
+      <created>1393278523470</created>
+      <updated>1393278523470</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -393,7 +396,8 @@
     <MESSAGE value="Update karma-e2e.conf.js.  Add e2e tests.  Add $httpBackend.   Add dev/prod switch for testing." />
     <MESSAGE value="Update UI.  Add error handling.  Remove workspace.xml." />
     <MESSAGE value="Remove workspace.xml" />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove workspace.xml" />
+    <MESSAGE value="Remove .idea.  Update .gitignore.&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove .idea.  Update .gitignore.&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
