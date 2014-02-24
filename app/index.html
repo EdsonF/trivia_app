@@ -13,10 +13,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title></title>
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width,inital-scale=1,user-scalable=no,maximum-scale=1">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/foundation/css/foundation.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,app}) styles/main.css -->
@@ -32,9 +33,10 @@
 
 
 <!-- Add your site or application content here -->
-<nav class="top-bar top-bar-dropshadow" data-ng-controller="NavCtrl" data-topbar>
+<nav class="top-bar" data-ng-controller="NavCtrl" data-topbar>
     <ul class="title-area">
-        <li class="name"><h1><a href="#">Movie Trivia App</a></h1></li>
+        <li class="name"><h1><a href="#">AngularJS Movie Trivia App</a></h1></li>
+        <li class="toggle-topbar menu-icon"><a>Menu</a></li>
     </ul>
     <section class="top-bar-section">
         <!-- Right Nav Section -->
@@ -46,18 +48,23 @@
     </section>
 </nav>
 
-<div class="app-errors" data-ng-controller="ErrorsCtrl">
-    <!--
-    <ul>
-        <li data-ng-repeat="error in errors">
-           <p>{{error}}</p>
-        </li>
-    </ul>
-    -->
-</div>
-
-
 <div data-ng-view=""></div>
+
+
+<div class="row">
+    <div class="small-10 small-offset-1 large-8 large-offset-2">
+        <div class="app-errors" data-ng-controller="ErrorsCtrl">
+            <ul>
+                <li data-ng-repeat="error in errors">
+                    <div data-alert class="alert-box alert">
+                        {{error}}
+                        <a class="close">&times;</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
 
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -94,6 +101,8 @@
 <script src="bower_components/fastclick/lib/fastclick.js"></script>
 <script src="bower_components/jquery.cookie/jquery.cookie.js"></script>
 <script src="bower_components/foundation/js/foundation.js"></script>
+<script src="bower_components/foundation/js/foundation/foundation.topbar.js"></script>
+<script src="bower_components/foundation/js/foundation/foundation.alert.js"></script>
 <script src="bower_components/jquery-validation/jquery.validate.js"></script>
 <script src="bower_components/angular-resource/angular-resource.js"></script>
 <script src="bower_components/angular-route/angular-route.js"></script>
@@ -107,5 +116,9 @@
 <script src="scripts/directives/directives.js"></script>
 <script src="scripts/services/services.js"></script>
 <!-- endbuild -->
+
+<script>
+    $(document).foundation();
+</script>
 </body>
 </html>

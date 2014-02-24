@@ -461,6 +461,9 @@ angular.module('triviaApp.services', [])
             return defer.promise;
         }
 
+
+
+
         function _getRecord(recordData) {
 
             var defer = $q.defer();

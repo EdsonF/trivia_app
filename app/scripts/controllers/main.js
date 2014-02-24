@@ -38,6 +38,7 @@ angular.module('triviaApp')
             $scope.question = '';
             $scope.userAnswer = '';
             $scope.cheatAnswer = '';
+            $scope.cheatModeEnabled = false;
 
             // Private vars
             $scope._actualAnswer = '';
@@ -56,6 +57,11 @@ angular.module('triviaApp')
             $scope.verifyAnswer = function (userAnswer) {
 
                 $scope.$broadcast('verifyAnswer', userAnswer)
+            };
+
+            $scope.cheatMode = function() {
+
+                $scope.$broadcast('cheatMode');
             };
 
 
@@ -106,6 +112,11 @@ angular.module('triviaApp')
             $scope.$on('api:ready', function (e) {
 
                 $scope.$broadcast('getMovie');
+            });
+
+            $scope.$on('cheatMode', function(e) {
+
+               $scope.cheatModeEnabled = $scope.cheatModeEnabled ? false : true;
             });
 
 
@@ -204,13 +215,13 @@ angular.module('triviaApp')
                                         $rootScope.$broadcast('user:loggedIn');
                                         $location.url('/');
                                     },
-                                    function (reason) {
-                                        console.log(reason)
+                                    function (errors) {
+                                        throw {message: errors.error[0].message}
                                     });
                             });
                     },
-                    function (data) {
-                        throw {message: 'Unable to login.'}
+                    function (errors) {
+                        throw {message: errors.error[0].message}
                     });
             })
         }])
@@ -262,6 +273,8 @@ angular.module('triviaApp')
                     }
                 };
 
+
+
                 DreamFactory.api.user.register(data,
                     function (data) {
 
@@ -274,13 +287,12 @@ angular.module('triviaApp')
                                 $rootScope.$broadcast('user:loggedIn');
                                 $location.url('/');
                             },
-                            function (reason) {
-                                console.log(reason)
+                            function (errors) {
+                                throw {message: errors.error[0].message}
                             });
                     },
-                    function (data) {
-
-                        throw {message: 'Unable to Register.'}
+                    function (errors) {
+                        throw {message: errors.error[0].message}
                     });
             })
         }]);

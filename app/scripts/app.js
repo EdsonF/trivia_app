@@ -6,11 +6,10 @@ angular.module('triviaApp', [
         'triviaApp.directives',
         'triviaApp.services',
         'ngMockE2E'
-
     ])
     .constant('DSP_URL', 'https://next.cloud.dreamfactory.com')
     .constant('DSP_API_KEY', 'trivia')
-    .constant('DEV_ENV', 1)
+    .constant('DEV_ENV', 0)
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider
             .when('/', {
@@ -121,8 +120,6 @@ angular.module('triviaApp', [
 
             $httpBackend.whenGET(/\/db\/TriviaScore\/1/).respond({id:1, user:1, score:50});
             $httpBackend.whenPOST(/\/db\/TriviaScore\/2/).respond({id:2, user:2, score:0});
-
-
 
 
         } else {

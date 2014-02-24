@@ -4,7 +4,7 @@
 describe("E2E: Application", function () {
 
 
-    describe("Test Navigation", function() {
+    xdescribe("Test Navigation", function() {
 
 
         beforeEach(function () {
@@ -34,7 +34,7 @@ describe("E2E: Application", function () {
 
 
 
-    describe("Test Login and Logout", function() {
+    xdescribe("Test Login and Logout", function() {
 
         beforeEach(function() {
             browser().navigateTo('#/login');
@@ -55,7 +55,7 @@ describe("E2E: Application", function () {
             element('#submit-login').click();
 
             expect(browser().location().url()).toBe('/');
-            expect(element('#user-name-display').text()).toEqual('User: Valid User');
+            expect(element('#user-name-display').text()).toEqual('Valid User');
         });
 
         it("should logout successfully", function() {
@@ -65,13 +65,13 @@ describe("E2E: Application", function () {
             element('#logout').click();
 
             expect(browser().location().url()).toBe('/');
-            expect(element('#user-name-display').text()).toEqual('User: Guest');
+            expect(element('#user-name-display').text()).toEqual('Guest');
         });
     });
 
 
 
-    describe("Test Register", function() {
+    xdescribe("Test Register", function() {
 
         beforeEach(function() {
 
@@ -86,7 +86,7 @@ describe("E2E: Application", function () {
             element('#submit-register').click();
 
             expect(browser().location().url()).toBe('/');
-            expect(element('#user-name-display').text()).toEqual('User: Test');
+            expect(element('#user-name-display').text()).toEqual('Test');
 
         })
     });
@@ -97,8 +97,9 @@ describe("E2E: Application", function () {
         beforeEach(function() {
 
             browser().navigateTo('/');
-            sleep(8);
         });
+
+
 
         it("should ask a question", function() {
 
@@ -110,7 +111,7 @@ describe("E2E: Application", function () {
             input('userAnswer').enter('This is a wrong answer');
             element('#submit-answer').click();
 
-            expect(element('#score').text()).toBe('Score: -10');
+            expect(element('#score').text()).toBe('-10');
         });
 
         it("should display a cheat answer", function() {
@@ -122,25 +123,27 @@ describe("E2E: Application", function () {
          * THIS TEST IS BROKEN
          **/
 
+
         /*
         it("should add points for a right answer", function() {
 
 
-            input('userAnswer').enter(element('#cheat-answer').text());
+            sleep(2);
+
+
+            console.log(binding('cheatAnswer'));
+
+
+
+            //input('userAnswer').enter();
 
             element('#submit-answer').click();
 
-            expect(element('#score').text()).toBe('Score: 10');
+            expect(element('#score').text()).toBe('10');
             expect(binding('cheatAnswer')).not().toBe('');
 
         });
         */
-
-
-
-
-
-
 
     });
 });
