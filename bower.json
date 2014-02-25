@@ -7,12 +7,12 @@
     "es5-shim": "~2.1.0",
     "angular-cookies": "1.2.6",
     "angular-sanitize": "1.2.6",
-    "dreamfactory": "~1.0.15",
     "foundation": "~5.1.0",
     "jquery-validation": "~1.11.2",
     "angular-resource": "~1.2.11",
     "angular-route": "~1.2.11",
-    "angular-mocks": "~1.2.13"
+    "angular-mocks": "~1.2.13",
+    "angular-dreamfactory": "*"
   },
   "devDependencies": {
     "angular-mocks": "1.2.6",
