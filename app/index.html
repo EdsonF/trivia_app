@@ -55,7 +55,7 @@
     <div class="small-10 small-offset-1 large-8 large-offset-2">
         <div class="app-errors" data-ng-controller="ErrorsCtrl">
             <ul>
-                <li data-ng-repeat="error in errors">
+                <li data-ng-cloak data-ng-repeat="error in errors">
                     <div data-alert class="alert-box alert">
                         {{error}}
                         <a class="close">&times;</a>
@@ -101,8 +101,6 @@
 <script src="bower_components/fastclick/lib/fastclick.js"></script>
 <script src="bower_components/jquery.cookie/jquery.cookie.js"></script>
 <script src="bower_components/foundation/js/foundation.js"></script>
-<script src="bower_components/foundation/js/foundation/foundation.topbar.js"></script>
-<script src="bower_components/foundation/js/foundation/foundation.alert.js"></script>
 <script src="bower_components/jquery-validation/jquery.validate.js"></script>
 <script src="bower_components/angular-resource/angular-resource.js"></script>
 <script src="bower_components/angular-route/angular-route.js"></script>
