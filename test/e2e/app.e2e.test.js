@@ -4,7 +4,7 @@
 describe("E2E: Application", function () {
 
 
-    xdescribe("Test Navigation", function() {
+    describe("Test Navigation", function() {
 
 
         beforeEach(function () {
@@ -34,7 +34,7 @@ describe("E2E: Application", function () {
 
 
 
-    xdescribe("Test Login and Logout", function() {
+    describe("Test Login and Logout", function() {
 
         beforeEach(function() {
             browser().navigateTo('#/login');
@@ -71,7 +71,7 @@ describe("E2E: Application", function () {
 
 
 
-    xdescribe("Test Register", function() {
+    describe("Test Register", function() {
 
         beforeEach(function() {
 
@@ -118,32 +118,6 @@ describe("E2E: Application", function () {
 
             expect(element('#cheat-answer').text()).not().toBe('');
         });
-
-        /**
-         * THIS TEST IS BROKEN
-         **/
-
-
-        /*
-        it("should add points for a right answer", function() {
-
-
-            sleep(2);
-
-
-            console.log(binding('cheatAnswer'));
-
-
-
-            //input('userAnswer').enter();
-
-            element('#submit-answer').click();
-
-            expect(element('#score').text()).toBe('10');
-            expect(binding('cheatAnswer')).not().toBe('');
-
-        });
-        */
 
     });
 });

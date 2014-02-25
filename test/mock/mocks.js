@@ -10,34 +10,10 @@ angular.module('triviaApp.mocks', [])
                         if ((creds.email === 'valid') && (creds.password === 'valid')) {
                             return true;
 
-                            /*
-                             return {
-                             app_groups: [],
-                             displayName: 'Valid User',
-                             email: 'valid@valid.com',
-                             first_name: 'valid_firstName',
-                             id: 1,
-                             is_sys_admin: false,
-                             last_login_date: '02/02/2014 00:00:00',
-                             last_name: 'valid_lastName',
-                             no_group_apps: [],
-                             session_id: '0000000000',
-                             ticket: '',
-                             ticket_expiry: '',
-                             user_data: [],
-                             user_source: 0
-                             }
-                             */
+
                         } else {
                             return false;
-                            /*
-                             return {"error": [
-                             {"message": "Invalid user name and password combination.",
-                             "code": 400,
-                             "context": null
-                             }
-                             ]}
-                             */
+
                         }
                     },
                     logout: function () {

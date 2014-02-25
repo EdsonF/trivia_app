@@ -17,7 +17,7 @@ module.exports = function (config) {
             'app/bower_components/angular-mocks/angular-mocks.js',
             'app/bower_components/angular-cookies/angular-cookies.js',
             'app/bower_components/angular-sanitize/angular-sanitize.js',
-            'app/bower_components/dreamfactory/dreamfactory.js',
+            'app/bower_components/angular-dreamfactory/angular-dreamfactory.js',
             'app/scripts/*.js',
             'app/scripts/**/*.js',
             'test/mock/**/*.js',

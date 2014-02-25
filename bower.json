@@ -11,11 +11,10 @@
     "jquery-validation": "~1.11.2",
     "angular-resource": "~1.2.11",
     "angular-route": "~1.2.11",
-    "angular-mocks": "~1.2.13",
     "angular-dreamfactory": "*"
   },
   "devDependencies": {
-    "angular-mocks": "1.2.6",
-    "angular-scenario": "1.2.6"
+    "angular-mocks": "~1.2.13",
+    "angular-scenario": "~1.2.13"
   }
 }
