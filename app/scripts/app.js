@@ -127,8 +127,9 @@ angular.module('triviaApp', [
             $httpBackend.whenGET().passThrough();
             $httpBackend.whenPOST().passThrough();
             $httpBackend.whenDELETE().passThrough();
+            $httpBackend.whenPATCH().passThrough();
 
         }
 
 
-    }])
+    }]);
