@@ -12,7 +12,8 @@
     "angular-resource": "~1.2.11",
     "angular-route": "~1.2.11",
     "angular-dreamfactory": "*",
-    "angular-mocks": "~1.2.13"
+    "angular-mocks": "~1.2.13",
+    "jquery": "~2.1.0"
   },
   "devDependencies": {
     "angular-mocks": "~1.2.13",
