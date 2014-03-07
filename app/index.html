@@ -8,7 +8,7 @@
 <!--[if gt IE 8]><!-->
 <html class="no-js"> <!--<![endif]-->
 <head>
-
+    <base href="/">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title></title>
@@ -41,9 +41,9 @@
     <section class="top-bar-section">
         <!-- Right Nav Section -->
         <ul class="right">
-            <li id="login-btn-container" data-ng-hide="loggedIn"><a id="login" href="#/login">Login</a></li>
-            <li id="register-btn-container" data-ng-hide="loggedIn"><a id="register" href="#/register">Register</a></li>
-            <li id="logout-btn-container" data-ng-show="loggedIn"><a id="logout" href="#/logout">Logout</a></li>
+            <li id="login-btn-container" data-ng-hide="loggedIn"><a id="login" href="./login">Login</a></li>
+            <li id="register-btn-container" data-ng-hide="loggedIn"><a id="register" href="./register">Register</a></li>
+            <li id="logout-btn-container" data-ng-show="loggedIn"><a id="logout" href="./logout">Logout</a></li>
         </ul>
     </section>
 </nav>
@@ -103,8 +103,8 @@
 <script src="bower_components/jquery-validation/jquery.validate.js"></script>
 <script src="bower_components/angular-resource/angular-resource.js"></script>
 <script src="bower_components/angular-route/angular-route.js"></script>
-<script src="bower_components/angular-mocks/angular-mocks.js"></script>
 <script src="bower_components/angular-dreamfactory/angular-dreamfactory.js"></script>
+<script src="bower_components/angular-mocks/angular-mocks.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 

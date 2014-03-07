@@ -10,6 +10,11 @@ angular.module('triviaApp', [
     .constant('DSP_URL', 'https://next.cloud.dreamfactory.com')
     .constant('DSP_API_KEY', 'trivia')
     .constant('DEV_ENV', 0)
+    .config(['$locationProvider', function($locationProvider) {
+
+        $locationProvider.html5Mode(true);
+        $locationProvider.hashPrefix('!');
+    }])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider
             .when('/', {
